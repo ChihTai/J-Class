@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0047)? -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>影城</title>
+<link rel="stylesheet" href="css/css.css">
+<link href="home_files/s2.css" rel="stylesheet" type="text/css">
+<script src="scripts/jquery-1.9.1.min.js"></script>
+</head>
+
+<body>
+<div id="main">
+  <div id="top" class="ct" style=" background:#999 center; background-size:cover; " title="替代文字">
+    <h1>ABC影城</h1>
+  </div>
+  <div id="top2"> <a href="03P01.htm">首頁</a> <a href="03P02.htm">線上訂票</a> <a href="#">會員系統</a> <a href="03P03.htm">管理系統</a> </div>
+  <div id="text"> <span class="ct">最新活動</span>
+    <marquee direction="right">
+    ABC影城票價全面八折優惠1個月
+    </marquee>
+  </div>
+  <div id="mm">
+    <div class="half" style="vertical-align:top;">
+      <h1>預告片介紹</h1>
+      <div class="rb tab" style="width:95%;">
+        <div id="abgne-block-20111227">
+          <!-- 目前播放的海報 -->
+          <div style="height:300px">
+            <img src="" alt="" height="250px" id="showpost" class="show">
+            <br>
+            <p id="showtext" class="show"></p>
+          </div>
+          <!-- 按鈕區 -->
+          <div style="height:100px; width:400px;">
+            <img src="./01E02.jpg" alt="" onclick="pp(1)">
+            <img src="./03A01.jpg" alt="" class="im" id="ssaa0" height="90px" onclick="anim(0)"> <p style="display:none" id="text0">預告片1</p>
+            <img src="./03A02.jpg" alt="" class="im" id="ssaa1" height="90px" onclick="anim(1)"> <p style="display:none" id="text1">預告片2</p>
+            <img src="./03A03.jpg" alt="" class="im" id="ssaa2" height="90px" onclick="anim(2)"> <p style="display:none" id="text2">預告片3</p>
+            <img src="./03A04.jpg" alt="" class="im" id="ssaa3" height="90px" onclick="anim(3)"> <p style="display:none" id="text3">預告片4</p>
+            <img src="./03A05.jpg" alt="" class="im" id="ssaa4" height="90px" onclick="anim(4)"> <p style="display:none" id="text4">預告片5</p>
+            <img src="./03A06.jpg" alt="" class="im" id="ssaa5" height="90px" onclick="anim(5)"> <p style="display:none" id="text5">預告片6</p>
+            <img src="./03A07.jpg" alt="" class="im" id="ssaa6" height="90px" onclick="anim(6)"> <p style="display:none" id="text6">預告片7</p>
+            <img src="./03A08.jpg" alt="" class="im" id="ssaa7" height="90px" onclick="anim(7)"> <p style="display:none" id="text7">預告片8</p>
+            <img src="./03A09.jpg" alt="" class="im" id="ssaa8" height="90px" onclick="anim(8)"> <p style="display:none" id="text8">預告片9</p>
+            <img src="./01E01.jpg" alt="" onclick="pp(2)">
+          </div>
+          <script>
+            var nowpage = 0,
+              num = 9;
+            function pp(x) {
+              var s, t;
+              if (x == 1 && nowpage - 1 >= 0) {
+                nowpage--;
+              }
+              if (x == 2 && (nowpage + 1) <= num*1-4) {
+                nowpage++;
+              }
+              $(".im").hide()
+              for (s = 0; s <= 3; s++) {
+                t = s * 1 + nowpage * 1;
+                $("#ssaa" + t).show()
+              }
+            }
+            pp(1)
+          </script>
+        </div>
+      </div>
+    </div>
+    <div class="half">
+      <h1>院線片清單</h1>
+      <div class="rb tab" style="width:95%;">
+        <table>
+          <tbody>
+            <tr> </tr>
+          </tbody>
+        </table>
+        <div class="ct"> </div>
+      </div>
+    </div>
+  </div>
+  <div id="bo"> ©Copyright 2010~2014 ABC影城 版權所有 </div>
+  <script>
+    // 總海報數
+    let total = 9;
+    // 目前播放的海報
+    let nowpost = 0;
+    // 動畫樣式
+    let ani = 1;
+    //  自動切換
+    setInterval(auto, 2000);
+
+    function auto(){
+      // 目前海報++
+      nowpost++;
+      // 如果目前大於總海報數，歸0回到第一張
+      if(nowpost > total) nowpost = 0;
+      // 執行切換動畫
+      anim(nowpost);
+    }
+
+    function anim(po){
+      if(ani == 1)  $(".show").fadeOut(function(){change(po)});
+      else if(ani == 2)  $(".show").slideToggle(function(){change(po)});
+      else if(ani == 3)  $(".show").slideUp(function(){change(po)});
+
+      if(ani == 1)  $(".show").fadeIn();
+      else if(ani == 2)  $(".show").slideToggle();
+      else if(ani == 3)  $(".show").slideDown();
+    } 
+
+    function change(p){
+      $("#showpost").attr("src", $("#ssaa"+p).attr("src") );
+      $("#showtext").text($("#text"+p).text() );
+      nowpost = p;
+    }
+  </script>
+</div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <img src="./0102.jpg" alt="" id="img1">
+  <input type="button" value="淡出" id="btn">
+  <input type="button" value="淡入" id="btn2">
+  <input type="button" value="淡入/淡出" id="btn3">
+  <input type="button" value="滑出" id="btn4">
+  <input type="button" value="滑入" id="btn5">
+  <input type="button" value="滑入/滑出" id="btn6">
+  <input type="button" value="執行動畫" id="btn7">
+  <input type="button" value="停止動畫" id="btn8">
+  <script src="./jquery-3.4.1.min.js"></script>
+  <script>
+    $("#btn").on("click",function(){
+      //淡出-fadOut(速度,完成時的function)
+      //速度 slow,fast,毫秒
+      $("#img1").fadeOut("3000",function(){
+        console.log("我淡出了");
+      });
+    })
+
+    $("#btn2").on("click",function(){
+      //淡入-fadOut(速度,完成時的function)
+      //速度 slow,fast,毫秒
+      
+      $("#img1").fadeIn("3000",function(){
+        console.log("我淡入了");
+      });
+    })
+    $("#btn3").on("click",function(){
+      //淡入/淡出-fadOut(速度,完成時的function)
+      //速度 slow,fast,毫秒
+      
+      $("#img1").fadeToggle("3000",function(){
+        console.log("我淡入/淡出了");
+      });
+    })
+
+    $("#btn4").on("click",function(){
+      //滑出-fadOut(速度,完成時的function)
+      //速度 slow,fast,毫秒
+      $("#img1").slideUp("3000",function(){
+        console.log("我滑出了");
+      });
+    })
+
+    $("#btn5").on("click",function(){
+      //滑入-fadOut(速度,完成時的function)
+      //速度 slow,fast,毫秒
+      
+      $("#img1").slideDown("3000",function(){
+        console.log("我滑入了");
+      });
+    })
+    $("#btn6").on("click",function(){
+      //滑入/滑出-fadOut(速度,完成時的function)
+      //速度 slow,fast,毫秒
+      
+      $("#img1").slideToggle("3000",function(){
+        console.log("我滑入/滑出了");
+      });
+    })
+    $("#btn7").on("click",function(){
+
+      $("#img1").animate({
+       // height:"500px",
+       // width:"500px",
+        opacity:0
+      },3000,function(){
+        console.log("執行動畫了");
+      });
+    })
+    $("#btn8").on("click",function(){
+      //.stop(停止之後的動畫 ,是否完成動畫)
+      //"是否完成動畫,必須要設定 "停止之後的動畫" 為ture"
+      $("#img1").stop(true,true);
+    })
+  </script>
+
+</body>
+</html>

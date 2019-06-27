@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .gallery {
+            width: 300px;
+            height: 300px;
+            overflow:hidden;
+            position: relative;
+        }
+        .imgs {
+            height: 300px;
+            position: absolute;
+            left: 0;
+        }
+        .pic {
+            width: 300px;
+            height: 300px;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="gallery">
+        <div class="imgs">
+            <img src="./0511.jpg" alt="" class="pic">
+            <img src="./0521.jpg" alt="" class="pic">
+            <img src="./0531.jpg" alt="" class="pic">
+            <img src="./0541.jpg" alt="" class="pic">
+            <img src="./0551.jpg" alt="" class="pic">
+        </div>
+    </div>
+    <input type="button" value="<" id="left">
+    <input type="button" value=">" id="right">
+    <script src="./jquery-3.4.1.min.js"></script>
+    <script>
+        $(function(){
+            let now = 0;
+            let total = $(".pic").length;
+            $(".imgs").css("width", total*300);
+
+            $("#right").on("click", function(){
+                if(now < total -1){
+                    now++;
+                    let left = now*300;
+                    $(".imgs").animate({left: `-${left+50}px`}, 1000).animate({left: `-${left}px`}, 100);
+                }
+            })
+
+            $("#left").on("click", function(){
+                if(now > 0){
+                    now--;
+                    let left = now*300;
+                    if(now == 0){
+                        $(".imgs").animate({left: `${left+50}px`}, 1000).animate({left: `-${left}px`}, 100);
+                    }
+                    else{
+                        $(".imgs").animate({left: `-${left-50}px`}, 1000).animate({left: `-${left}px`}, 100);
+                    }
+                }
+            })
+        })
+    </script>
+</body>
+</html>
