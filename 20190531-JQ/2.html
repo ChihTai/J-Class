@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div1">
+        <div>
+            <div id="div2"></div>
+            <ul id="ul1">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </ul>
+            <ul id="ul2">
+                    <li>6</li>
+                    <li>7</li>
+                    <li>8</li>
+                    <li>9</li>
+                    <li>10</li>
+            </ul>
+            <ul id="ul3">
+                    <li>連結<a href="#">11</a></li>
+                    <li>連結<a href="#">12</a></li>
+                    <li>連結<a href="#" id="li13">13</a></li>
+                    <li>連結<a href="#" id="li14">14</a></li>
+                    <li>連結<a href="#" id="li15">15</a></li>
+            </ul>
+                
+    </div>
+    </div>
+        <script src="./jquery-3.4.1.min.js"></script>
+        <script>
+            $(function(){
+                //parent 上一層元素
+                //parents 往上找,找出所有符合()裡選擇器的元素
+                //$("li").eq(2).parent().css("background","red");
+                //closest 往上找,找出最近符合()裡選擇器的元素
+                $("li").eq(2).closest("div").css("background","red");
+
+                //siblings().同一層元素,括號裡面是選擇器
+                $("#ul2").siblings().css("color","white");
+
+                //next 同一層的下一個東西
+                //nextAll 同一層的所有東西
+                //prev() 同一層的上一個東西
+                //prevAll() 同一層的所有之前符合括號裡指定東西
+                //find() 尋找括號裡指定的東西
+                $("#ul2").next().find("li").eq(2).css("font-size","100px");
+               
+/*                 $("#li2").next().on("a", function(){
+                $("ul3").next().next().css("color","blue");;
+        })   */ 
+                $("#ul2").find("li").eq(2).click(function(){
+                    $(this).parent().next().find("li").eq(4).css("color","black")
+                })
+
+                //append 在元素的結尾前插入東西
+                //prepend 在元素的開始插入html
+                $("#li15").click(function(){
+                    $(this).parent().append(
+                        `<li>16</li>`
+                    )
+                })
+
+                //remove 刪除元素
+                $("#li14").click(function(){
+                    $(this).remove();
+                })
+
+                $("#li13").click(function(){
+                    $(this).empty();
+                })
+
+
+            })
+        </script>
+    
+</body>
+</html>

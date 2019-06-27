@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button class="btn" onclick="changeTab(this)">健康新知</button>
+    <button class="btn" onclick="changeTab(this)">菸害防制</button>
+    <button class="btn" onclick="changeTab(this)">癌症防治</button>
+    <button class="btn" onclick="changeTab(this)">慢性病防治</button>
+    <div class="tab">健康新知</div>
+    <div class="tab">菸害防制</div>
+    <div class="tab">癌症防治</div>
+    <div class="tab">慢性病防治</div>
+    <script src="./jquery-3.4.1.min.js"></script>
+    <script>
+        $(function(){
+            // 點擊事件
+            $(".btn").click(function(){
+                let idx = $(this).index();
+                console.log(idx);
+                $(".tab").eq(idx).show();
+                $(".tab").eq(idx).siblings("div").hide();
+            })
+        })
+        // 使用標籤的onclcik function
+        function changeTab (element){
+            let idx = $(element).parent().find(".btn").index(element);
+            console.log(idx);
+            $(".tab").eq(idx).show();
+            $(".tab").eq(idx).siblings("div").hide();
+        }
+        
+        $(".btn").eq(0).click();
+    </script>
+</body>
+</html>

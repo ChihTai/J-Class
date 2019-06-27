@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <ul id="ul1">
+            <input type="text" id="ip1" value="11"> <button  id="bt1">add</button> 
+            
+    </ul>
+    <script src="./jquery-3.4.1.min.js"></script>
+    <script>
+        $(function(){
+          
+            $("#bt1").click(function(){
+                $("#ul1").append(
+                        `<li>`+$("#ip1").val()+`<button  class="bt" >del</button></li>` 
+                    )
+                  
+            
+        })  
+        $("body").on("click",".bt",function(){
+                $(this).parent().remove();
+            }) 
+
+        })
+    </script>
+
+</body>
+</html>

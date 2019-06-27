@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	<h1>我是h1</h1>
+	<h1>我是第二個h1</h1>
+	<a href="#" id="mya">我是a</a>
+	<button id="btn">點我</button>
+	<script src="./jquery-3.4.1.min.js"></script>
+	<script>
+		// $(document).ready(function(){
+		// })
+		$(function(){
+			// 括號內有東西代表設定值
+			$("h1").text("123");
+			
+			// 括號內沒東西代表取值
+			console.log( $("h1").text() );
+
+			// 使用.eq()抓取元素陣列的第X個
+			$("h1").eq(1).text("Hello");
+			$("h1").eq(0).html(`<a href="#">Hi</a>`);
+
+			// 括號裡的第一個是要哪個屬性，有第二個就是設定屬性，沒有第二個就是抓屬性值
+			console.log( $("#mya").attr("href") );
+			$("#mya").attr("href", "https://www.google.com");
+
+			$("#mya").css("color", "#f00");
+			console.log( $("#mya").css("color") );
+
+			// .事件名稱(function(){})
+			// 只有部分常用事件能這樣寫
+			// $("#btn").click(function(){
+			// })
+			
+			// .on(事件名稱, function(){})
+			$("#btn").on("click", function(){
+				$("#mya").text("asdasd");
+			})
+		})
+	</script>
+</body>
+</html>

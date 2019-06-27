@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">點我換圖</button>
+    <img id="pic" src="./0104.jpg" alt="">
+    <script src="./jquery-3.4.1.min.js"></script>
+    <script>
+        $(function(){
+            // 點按鈕時
+            $("#btn").click(function(){
+                // 抓取目前圖片是哪個檔案
+                let pic = $("#pic").attr("src");
+                // 如果是校長
+                if(pic == "./0104.jpg"){
+                    // 換成書曼
+                    $("#pic").attr("src", "./0507.jpg");
+                }
+                // 如果是書曼
+                else{
+                    // 換成校長
+                    $("#pic").attr("src", "./0104.jpg");
+                }
+            })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div1">
+        <div id="div2">
+            <ul id="ul1">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </ul>
+            <ul id="ul2">
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+                <li>9</li>
+                <li>10</li>
+            </ul>
+            <ul id="ul3">
+                <li>連結<a href="#">11</a></li>
+                <li>連結<a href="#">12</a></li>
+                <li>連結<a href="#" id="li13">13</a></li>
+                <li>連結<a href="#" id="li14">14</a></li>
+                <li>連結<a href="#" id="li15">15</a></li>
+            </ul>
+        </div>
+    </div>
+   
+    <script src="./jquery-3.4.1.min.js"></script>
+    <script>
+        $(function(){
+            // parent 上一層元素
+            // parents 往上找，找出所有符合()裡選擇器的元素
+            // closest 往上找，找到第一個符合選擇器的元素
+            $("li").eq(2).closest("div").css("background", "red");
+            // siblings() 同一層的元素，括號裡面是選擇器
+            $("#ul2").siblings().css("color", "white");
+            // next() 同一層的下一個東西
+            // nextAll() 同一層的所有之後符合括號裡指定東西
+            // prev() 同一層的上一個東西
+            // prevAll() 同一層的所有之前符合括號裡指定東西
+            // find() 尋找括號裡指定的東西
+            $("#ul2").next().find("li").eq(2).css("font-size", "100px");
+            $("#ul2").find("li").eq(2).click(function(){
+                $(this).parent().next().find("li").eq(4).css("color", "aqua")
+            })
+
+            // append 在元素的結尾前插入html
+            // prepend 在元素的開始插入html
+            $("#li15").click(function(){
+                $(this).parent().append(
+                    `<li>16</li>`
+                )
+            })
+
+            // remove 刪除元素
+            $("#li14").click(function(){
+                $(this).remove();
+            })
+
+             // remove 清空元素
+             $("#li13").click(function(){
+                $(this).empty();
+            })
+            
+            // 小練習
+            // 設定點擊  <li>8</li> 時改變 <li>15</li> 的顏色，不要使用 $("li").eq()
+        })
+    </script>
+</body>
+</html>

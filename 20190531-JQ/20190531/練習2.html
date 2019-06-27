@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>待辦清單</h1>
+    <input type="text" name="" id="newitem">
+    <button id="add">新增</button>
+    <ul id="list">
+
+    </ul>
+    <script src="./jquery-3.4.1.min.js"></script>
+    <script>
+        $(function(){
+            $("#add").click(function(){
+                let newitem = $("#newitem").val();
+                $("#list").append(`<li>${newitem} <button class="del">X</button></li>`);
+                $("#newitem").val("");
+
+               /*  $(".del").click(function(){
+                    $(this).parent().remove();
+                }) */
+            })
+
+            $("body").on("click", ".del", function(){
+                $(this).parent().remove();
+            })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #gallery{
+            width: 300px;
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+        #imgs{
+            height: 300px;
+            width: 1500px;
+            position: absolute;
+            left: 0;
+        }   
+        .pic{
+            width: 300px;
+            height: 300px;
+            float: left;
+        }  
+    </style>
+</head>
+<body>
+    <div id="gallery">
+        <div id="imgs">
+            <img src="./0511.jpg" alt="" class="pic">
+            <img src="./0521.jpg" alt="" class="pic">
+            <img src="./0531.jpg" alt="" class="pic">
+            <img src="./0541.jpg" alt="" class="pic">
+            <img src="./0551.jpg" alt="" class="pic">
+        </div>
+    </div>
+    <button id="left"><</button>
+    <button id="right">></button>
+        <script src="./jquery-3.4.1.min.js"></script>
+        <script>
+        
+        $(function(){
+            let nowimg = 0;
+            let total = $(".pic").length;
+            //點擊事件
+            $("#right").click(function(){
+                if(nowimg < total-1){
+                    nowimg++;
+                    console.log(`現在是第${nowimg}張`);
+                let move = nowimg *300;
+                $("#imgs").css("left",`-${move}px`);
+                }
+            }) 
+
+            $("#left").click(function(){
+                if(nowimg >0){
+                    nowimg--;
+                    console.log(`現在是第${nowimg}張`);
+                let move = nowimg *300;
+                $("#imgs").css("left",`-${move}px`);
+                }
+           
+        }) 
+        })
+        </script>
+</body>
+</html>
